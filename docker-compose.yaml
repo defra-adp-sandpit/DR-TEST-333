@@ -1,0 +1,19 @@
+services:
+  DR-TEST-333:
+    build:
+      context: .
+      target: production
+    image: DR-TEST-333
+    container_name: DR-TEST-333
+    depends_on:
+      - DR-TEST-333-postgres
+    environment:
+      APPINSIGHTS_CLOUDROLE: DR-TEST-333-local
+      APPINSIGHTS_CONNECTIONSTRING: ${APPINSIGHTS_CONNECTIONSTRING}
+
+  DR-TEST-333-postgres:
+    image: postgres:11.4-alpine
+    environment:
+      POSTGRES_DB: DR-TEST-333
+      POSTGRES_PASSWORD: ppp
+      POSTGRES_USERNAME: postgres

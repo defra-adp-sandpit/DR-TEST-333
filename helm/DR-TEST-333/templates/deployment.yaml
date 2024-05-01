@@ -1,0 +1,8 @@
+{{- include "adp-helm-library.deployment" (list . "DR-TEST-333.deployment") -}}
+{{- define "DR-TEST-333.deployment" -}}
+spec:
+  template:
+    spec:
+      containers:
+      - {{ include "adp-helm-library.container" (list . "DR-TEST-333.container") }}
+{{- end -}}
